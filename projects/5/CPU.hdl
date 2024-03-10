@@ -33,4 +33,55 @@ CHIP CPU {
 
     PARTS:
 	//// Replace this comment with your code.
+    // 是A指令还是C指令
+    Not(in = instruction[15], out = isA);
+    Not(in = isA, out = isC);
+    
+    //控制位1：确定选择指令输出还是ALU的输出作为输出
+    And(a = isC, b = instruction[5], out = loadAluOut);
+    Mux16(a = instruction, b = outALU, sel = loadAluOut, out = inAR);
+    
+    //确定A寄存器的load位 (A指令或者loadAluOut)
+    Or(a = instruction[5], b =  isA, out = isLoadAR);
+    ARegister(in = inAR, load = isLoadAR, out = outAR, out[0..14] = addressM);
+    
+    //确定ALU的一个输入
+    And(a = instruction[12], b = isC, out = ARorM);
+    Mux16(a = outAR, b= inM, sel = ARorM, out = outAM);
+    
+    //writeM
+    And(a = instruction[3], b = isC, out = writeM);
+    
+    //是否写入DR
+    And(a = instruction[4], b = isC, out = isLoadDR);
+    DRegister(in = outALU, load = isLoadDR, out = outDR);
+    
+    //ALU
+    And(a = isC, b = instruction[6], out = no);
+    And(a = isC, b = instruction[7], out = f);
+    And(a = isC, b = instruction[8], out = ny);
+    And(a = isC, b = instruction[9], out = zy);
+    And(a = isC, b = instruction[10], out = nx);
+    And(a = isC, b = instruction[11], out = zx);
+    ALU(x = outDR, y = outAM, zx = zx, nx = nx, zy = zy, ny = ny, f = f, no = no, out = outALU, out = outM, zr=zr, ng=ng);
+
+    //jmp
+    And(a = isC, b = instruction[0], out = isGT);
+    And(a = isC, b = instruction[1], out = isEQ);
+    And(a = isC, b = instruction[2], out = isLT);
+    
+    And(a = ng, b = isLT, out = isLtJump);
+    And(a = zr, b = isEQ, out = isEqJump);
+
+    // ALU输出是否大于0
+    Not(in = ng, out = notNg);
+    Not(in = zr, out = notZr);
+    And(a = notNg, b = notZr, out = isOutGt);
+    
+    And(a = isGT, b = isOutGt, out = isGtJump);
+
+    Or(a = isLtJump, b = isEqJump, out = isJump);
+    Or(a = isJump, b = isGtJump, out = jump);
+
+    PC(in = outAR, load =  jump, inc = true, reset = reset, out[0..14] = pc);
 }

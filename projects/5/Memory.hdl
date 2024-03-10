@@ -26,4 +26,14 @@ CHIP Memory {
 
     PARTS:
 	//// Replace this comment with your code.
+    //根据最高两位地址选择要操作的芯片
+    DMux4Way(in = load, sel = address[13..14], a = loadA, b = loadB, c= loadC, d = loadD);
+    // 00|01
+    Or(a = loadA, b = loadB, out = loadRAM16K);
+    //out
+    RAM16K(in = in, address = address[0..13], load = loadRAM16K, out = outRAM);
+    Screen(in = in, load = loadC, address = address[0..12], out = outScreen);
+    Keyboard(out = outKBD);
+    //memory out
+    Mux4Way16(a = outRAM, b = outRAM, c = outScreen, d = outKBD, sel = address[13..14], out = out);	
 }
