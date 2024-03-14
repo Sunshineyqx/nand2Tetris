@@ -1,5 +1,9 @@
 # 													Nend2Tetris
 
+![image-20240311101636313](readme.assets/image-20240311101636313.png)
+
+# Part 1
+
 ## [Reference](https://www.nand2tetris.org/)
 
 [The Chip Set API](https://drive.google.com/file/d/1IsDnH0t7q_Im491LQ7_5_ajV0CokRbwR/view):
@@ -244,7 +248,7 @@ https://www.coursera.org/learn/build-a-computer/lecture/XtYPq/unit-3-6-perspecti
 
 ---
 
-### Project 6
+## Project 6
 
 每台计算机都有一种二进制机器语言和一种符号机器语言，前者将指令写成一串 0 和 1，后者则使用人类友好的助记符来表达指令。**这两种语言的功能完全相同，完全等价。**但是，用汇编语言编写程序要比用二进制语言编写程序容易得多，也安全得多。为了享受这种奢侈，必须有人将我们的符号程序翻译成二进制代码，以便在目标计算机上按原样执行。这项翻译工作由一个名为***汇编程序***的代理完成。装配员可以是一个手动执行翻译的人，也可以是一个自动执行翻译的计算机程序。在本模块和课程的最后一个项目中，我们将学习如何构建一个汇编器。特别是，我们将开发把符号 Hack 程序翻译成二进制代码的能力，以便在 Hack 平台上按原样执行。你们每个人都可以选择两种不同的方式来完成这一壮举：要么使用高级语言实现汇编器，要么使用纸和笔模拟汇编器的运行。在这两种情况下，我们都会就如何完成工作提供详细的指导。
 
@@ -290,3 +294,123 @@ https://www.coursera.org/learn/build-a-computer/lecture/XtYPq/unit-3-6-perspecti
 ![image-20240309220810103](readme.assets/image-20240309220810103.png)
 
 ![image-20240309222652501](readme.assets/image-20240309222652501.png)
+
+---
+
+# Part 2
+
+![image-20240311101951477](readme.assets/image-20240311101951477.png)
+
+## Project 7
+
+虚拟机
+
+在某些现代语言（尤其是 Java）中，高级代码并不是直接翻译成机器语言的。相反，Java 编译器会将高级源代码翻译成用中间语言编写的代码，以便在称为*虚拟机*的抽象处理层上运行。
+
+在本模块中，我们将开始构建**基于堆栈的虚拟机**。在介绍了虚拟机架构及其虚拟机语言（类似于 Java 的字节码）后，我们将开发一个基本的虚拟机翻译器（类似于 Java 的JVM），用于将虚拟机程序翻译成 Hack 机器语言。
+
+在下一个模块中，我们将把这个基本翻译器扩展为一个完整的虚拟机实现。这个实现反过来将作为我们在课程后面将要开发的双层编译器的后端模块。
+
+![image-20240312133555774](readme.assets/image-20240312133555774.png)
+
+### 1. The Road ahead
+
+![image-20240311171538322](readme.assets/image-20240311171538322.png)
+
+### 2. 程序编译预览
+
+![image-20240311210244649](readme.assets/image-20240311210244649.png)
+
+![image-20240311210223418](readme.assets/image-20240311210223418.png)
+
+### 3. 虚拟机抽象: 堆栈
+
+在目标机器语言和高级语言之前取得很好平衡的一种架构: stack machine.
+
+![image-20240311211209615](readme.assets/image-20240311211209615.png)
+
+![image-20240311211558584](readme.assets/image-20240311211558584.png)
+
+![image-20240311212557108](readme.assets/image-20240311212557108.png)
+
+![image-20240311212821976](readme.assets/image-20240311212821976.png)
+
+![image-20240311213636301](readme.assets/image-20240311213636301.png)
+
+![image-20240311214537981](readme.assets/image-20240311214537981.png)
+
+![image-20240311215629050](readme.assets/image-20240311215629050.png)
+
+### 4.虚拟机抽象: 内存段
+
+> 内存段和内存段命令
+
+![image-20240311221409095](readme.assets/image-20240311221409095.png)
+
+![image-20240311221638785](readme.assets/image-20240311221638785.png)
+
+> 所有的内存段:
+
+![image-20240311221801738](readme.assets/image-20240311221801738.png)
+
+### 5.虚拟机实现: 堆栈
+
+![478c3e1572eddc995b819e3318bc529](readme.assets/478c3e1572eddc995b819e3318bc529.jpg)
+
+![84cc4f8e905df8a5f90213d5c3caca3](readme.assets/84cc4f8e905df8a5f90213d5c3caca3.jpg)
+
+### 6. 虚拟机实现: 内存段
+
+![080ecec0508805d30b0da978afe47d8](readme.assets/080ecec0508805d30b0da978afe47d8-17102209910621.jpg)
+
+![image-20240312132324811](readme.assets/image-20240312132324811.png)
+
+![image-20240312132331621](readme.assets/image-20240312132331621.png)
+
+![image-20240312132435098](readme.assets/image-20240312132435098.png)
+
+![image-20240312132545716](readme.assets/image-20240312132545716.png)
+
+![image-20240312132849459](readme.assets/image-20240312132849459.png)
+
+![image-20240312133402238](readme.assets/image-20240312133402238.png)
+
+### 7. 虚拟机模拟器
+
+![image-20240312134501466](readme.assets/image-20240312134501466.png)
+
+![image-20240312134900430](readme.assets/image-20240312134900430.png)
+
+![image-20240312140432726](readme.assets/image-20240312140432726.png)
+
+![image-20240312144637947](readme.assets/image-20240312144637947.png)
+
+### 8. Hack平台上虚拟机的实现
+
+![image-20240312144959336](readme.assets/image-20240312144959336.png)
+
+![image-20240312145037260](readme.assets/image-20240312145037260.png)
+
+![image-20240312145116670](readme.assets/image-20240312145116670.png)
+
+![image-20240312151639447](readme.assets/image-20240312151639447.png)
+
+![image-20240312151649139](readme.assets/image-20240312151649139.png)
+
+### 9. 虚拟机实现建议
+
+![image-20240312152615457](readme.assets/image-20240312152615457.png)
+
+![image-20240312154318070](readme.assets/image-20240312154318070.png)
+
+![image-20240312154620998](readme.assets/image-20240312154620998.png)
+
+![image-20240312154803435](readme.assets/image-20240312154803435.png)
+
+![image-20240312160259377](readme.assets/image-20240312160259377.png)
+
+### 10. 构建虚拟机翻译器: Part 1
+
+![image-20240312160734975](readme.assets/image-20240312160734975.png)
+
+![image-20240312161438089](readme.assets/image-20240312161438089.png)
