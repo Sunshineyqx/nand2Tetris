@@ -414,3 +414,101 @@ https://www.coursera.org/learn/build-a-computer/lecture/XtYPq/unit-3-6-perspecti
 ![image-20240312160734975](readme.assets/image-20240312160734975.png)
 
 ![image-20240312161438089](readme.assets/image-20240312161438089.png)
+
+---
+
+## Project 8
+
+在上一模块中，我们介绍了虚拟机抽象，并开发了一个基本的虚拟机翻译器来实现虚拟机语言的算术和内存访问命令。在本模块中，我们将通过实现剩余的虚拟机语言分支和函数调用命令来完成虚拟机翻译器。
+
+**分支**和**函数调用**当然是编程理论和实践的主要内容。因此，我们将在本模块开始时概述它们的用法、抽象和实现。这将为本模块的其余部分奠定基础，在这些部分中，我们将完成虚拟机翻译器的规范和实现。
+
+### 1. 程序控制
+
+分支/函数命令
+
+![image-20240314171407470](readme.assets/image-20240314171407470.png)
+
+![image-20240314174626153](readme.assets/image-20240314174626153.png)
+
+### 2. 分支命令
+
+![image-20240315142354864](readme.assets/image-20240315142354864.png)
+
+### 3.函数命令
+
+![image-20240315152806450](readme.assets/image-20240315152806450.png)
+
+### 4. 函数调用与返回
+
+#### 1.实现预览
+
+//call
+
+![image-20240315173815813](readme.assets/image-20240315173815813.png)
+
+//return
+
+![image-20240315173744715](readme.assets/image-20240315173744715.png)
+
+![image-20240315190329890](readme.assets/image-20240315190329890.png)
+
+#### 2. 运行时模拟
+
+![image-20240315194430030](readme.assets/image-20240315194430030.png)
+
+![image-20240315194414667](readme.assets/image-20240315194414667.png)
+
+#### 3. Function call、return实现
+
+![image-20240315195543529](readme.assets/image-20240315195543529.png)
+
+//caller
+
+![image-20240315200035840](readme.assets/image-20240315200035840.png)
+
+//callee
+
+![image-20240315200631035](readme.assets/image-20240315200631035.png)
+
+//**实现！！！！**
+
+call
+
+![image-20240315203232253](readme.assets/image-20240315203232253.png)
+
+function
+
+![image-20240315203539428](readme.assets/image-20240315203539428.png)
+
+return
+
+![image-20240315204213072](readme.assets/image-20240315204213072.png)
+
+![image-20240315204223054](readme.assets/image-20240315204223054.png)
+
+---
+
+![image-20240315204433827](readme.assets/image-20240315204433827.png)
+
+---
+
+#### 4. 在Hack平台上实现虚拟机
+
+![image-20240315231630071](readme.assets/image-20240315231630071.png)
+
+![image-20240315233033686](readme.assets/image-20240315233033686.png)
+
+![image-20240315233420377](readme.assets/image-20240315233420377.png)
+
+![image-20240315233620132](readme.assets/image-20240315233620132.png)
+
+//
+
+![image-20240315234708508](readme.assets/image-20240315234708508.png)
+
+![image-20240315234737373](readme.assets/image-20240315234737373.png)
+
+![image-20240315234745006](readme.assets/image-20240315234745006.png)
+
+![image-20240315234759486](readme.assets/image-20240315234759486.png)

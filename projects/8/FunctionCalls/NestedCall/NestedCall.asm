@@ -1,51 +1,153 @@
-//function Class1.set 0
-(Class1.set)
+//bootstrap
+@261
+D=A
+@SP
+M=D
+@Sys.init
+0;JMP
 
-//push argument 0
-@ARG
-D = M
-@0
-D = D + A
-A = D
-D = M
+//function Sys.init 0
+(Sys.init)
+
+//push constant 4000
+@4000
+D = A
 @SP
 A = M
 M = D
 @SP
 M = M + 1
 
-//pop static 0
+//pop pointer 0
 @SP
 M = M - 1
 @SP
 A = M
 D = M
-@Class1.0
+@R3
 M = D
 
-//push argument 1
+//push constant 5000
+@5000
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//pop pointer 1
+@SP
+M = M - 1
+@SP
+A = M
+D = M
+@R4
+M = D
+
+//call Sys.main 0
+@Sys.mainret.0
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+@LCL
+D = M
+@SP
+A = M
+M = D
+@SP
+M = M + 1
 @ARG
 D = M
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+@THIS
+D = M
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+@THAT
+D = M
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+@SP
+D = M
+@5
+D = D - A
+@ARG
+M = D
+@SP
+D = M
+@LCL
+M = D
+@Sys.main
+0;JMP
+(Sys.mainret.0)
+
+//pop temp 1
+@R5
+D = A
 @1
 D = D + A
-A = D
+@SP
+M = M - 1
+@R13
+M = D
+@SP
+A = M
 D = M
+@R13
+A = M
+M = D
+
+//label LOOP
+(LOOP)
+
+//goto LOOP
+@LOOP
+0;JMP
+
+//function Sys.main 5
+(Sys.main)
+@0
+D = A
 @SP
 A = M
 M = D
 @SP
 M = M + 1
-
-//pop static 1
-@SP
-M = M - 1
+@0
+D = A
 @SP
 A = M
-D = M
-@Class1.1
 M = D
-
-//push constant 0
+@SP
+M = M + 1
+@0
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+@0
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
 @0
 D = A
 @SP
@@ -54,160 +156,91 @@ M = D
 @SP
 M = M + 1
 
-//return
+//push constant 4001
+@4001
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//pop pointer 0
+@SP
+M = M - 1
+@SP
+A = M
+D = M
+@R3
+M = D
+
+//push constant 5001
+@5001
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//pop pointer 1
+@SP
+M = M - 1
+@SP
+A = M
+D = M
+@R4
+M = D
+
+//push constant 200
+@200
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//pop local 1
 @LCL
 D = M
+@1
+D = D + A
 @R13
-M = D
-@5
-A = D - A
-D = M
-@R14
 M = D
 @SP
 M = M - 1
 @SP
 A = M
 D = M
-@ARG
+@R13
 A = M
 M = D
-@ARG
-D = M + 1
+
+//push constant 40
+@40
+D = A
 @SP
+A = M
 M = D
-@R13
-D = M
-D = D - 1
-A = D
-D = M
-@THAT
-M = D
-@R13
+@SP
+M = M + 1
+
+//pop local 2
+@LCL
 D = M
 @2
-D = D - A
-A = D
-D = M
-@THIS
-M = D
+D = D + A
 @R13
-D = M
-@3
-D = D - A
-A = D
-D = M
-@ARG
-M = D
-@R13
-D = M
-@4
-D = D - A
-A = D
-D = M
-@LCL
-M = D
-@R14
-A = M
-0;JMP
-
-//function Class1.get 0
-(Class1.get)
-
-//push static 0
-@Class1.0
-D = M
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//push static 1
-@Class1.1
-D = M
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//sub
-@SP
-M = M - 1
-@SP
-A = M
-D = M
-@SP
-M = M - 1
-@SP
-A = M
-D = M - D
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//return
-@LCL
-D = M
-@R13
-M = D
-@5
-A = D - A
-D = M
-@R14
 M = D
 @SP
 M = M - 1
 @SP
 A = M
 D = M
-@ARG
+@R13
 A = M
 M = D
-@ARG
-D = M + 1
-@SP
-M = D
-@R13
-D = M
-D = D - 1
-A = D
-D = M
-@THAT
-M = D
-@R13
-D = M
-@2
-D = D - A
-A = D
-D = M
-@THIS
-M = D
-@R13
-D = M
-@3
-D = D - A
-A = D
-D = M
-@ARG
-M = D
-@R13
-D = M
-@4
-D = D - A
-A = D
-D = M
-@LCL
-M = D
-@R14
-A = M
-0;JMP
-
-//function Sys.init 0
-(Sys.init)
 
 //push constant 6
 @6
@@ -218,8 +251,24 @@ M = D
 @SP
 M = M + 1
 
-//push constant 8
-@8
+//pop local 3
+@LCL
+D = M
+@3
+D = D + A
+@R13
+M = D
+@SP
+M = M - 1
+@SP
+A = M
+D = M
+@R13
+A = M
+M = D
+
+//push constant 123
+@123
 D = A
 @SP
 A = M
@@ -227,8 +276,8 @@ M = D
 @SP
 M = M + 1
 
-//call Class1.set 2
-@Class1.setret.0
+//call Sys.add12 1
+@Sys.add12ret.1
 D = A
 @SP
 A = M
@@ -265,7 +314,7 @@ M = D
 M = M + 1
 @SP
 D = M
-@7
+@6
 D = D - A
 @ARG
 M = D
@@ -273,9 +322,9 @@ M = D
 D = M
 @LCL
 M = D
-@Class1.set
+@Sys.add12
 0;JMP
-(Class1.setret.0)
+(Sys.add12ret.1)
 
 //pop temp 0
 @R5
@@ -293,202 +342,8 @@ D = M
 A = M
 M = D
 
-//push constant 23
-@23
-D = A
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//push constant 15
-@15
-D = A
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//call Class2.set 2
-@Class2.setret.1
-D = A
-@SP
-A = M
-M = D
-@SP
-M = M + 1
+//push local 0
 @LCL
-D = M
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-@ARG
-D = M
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-@THIS
-D = M
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-@THAT
-D = M
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-@SP
-D = M
-@7
-D = D - A
-@ARG
-M = D
-@SP
-D = M
-@LCL
-M = D
-@Class2.set
-0;JMP
-(Class2.setret.1)
-
-//pop temp 0
-@R5
-D = A
-@0
-D = D + A
-@SP
-M = M - 1
-@R13
-M = D
-@SP
-A = M
-D = M
-@R13
-A = M
-M = D
-
-//call Class1.get 0
-@Class1.getret.2
-D = A
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-@LCL
-D = M
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-@ARG
-D = M
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-@THIS
-D = M
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-@THAT
-D = M
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-@SP
-D = M
-@5
-D = D - A
-@ARG
-M = D
-@SP
-D = M
-@LCL
-M = D
-@Class1.get
-0;JMP
-(Class1.getret.2)
-
-//call Class2.get 0
-@Class2.getret.3
-D = A
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-@LCL
-D = M
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-@ARG
-D = M
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-@THIS
-D = M
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-@THAT
-D = M
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-@SP
-D = M
-@5
-D = D - A
-@ARG
-M = D
-@SP
-D = M
-@LCL
-M = D
-@Class2.get
-0;JMP
-(Class2.getret.3)
-
-//label END
-(END)
-
-//goto END
-@END
-0;JMP
-
-//function Class2.set 0
-(Class2.set)
-
-//push argument 0
-@ARG
 D = M
 @0
 D = D + A
@@ -500,17 +355,8 @@ M = D
 @SP
 M = M + 1
 
-//pop static 0
-@SP
-M = M - 1
-@SP
-A = M
-D = M
-@Class2.0
-M = D
-
-//push argument 1
-@ARG
+//push local 1
+@LCL
 D = M
 @1
 D = D + A
@@ -522,18 +368,107 @@ M = D
 @SP
 M = M + 1
 
-//pop static 1
+//push local 2
+@LCL
+D = M
+@2
+D = D + A
+A = D
+D = M
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//push local 3
+@LCL
+D = M
+@3
+D = D + A
+A = D
+D = M
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//push local 4
+@LCL
+D = M
+@4
+D = D + A
+A = D
+D = M
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//add
 @SP
 M = M - 1
 @SP
 A = M
 D = M
-@Class2.1
+@SP
+M = M - 1
+@SP
+A = M
+D = D + M
+@SP
+A = M
 M = D
+@SP
+M = M + 1
 
-//push constant 0
-@0
-D = A
+//add
+@SP
+M = M - 1
+@SP
+A = M
+D = M
+@SP
+M = M - 1
+@SP
+A = M
+D = D + M
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//add
+@SP
+M = M - 1
+@SP
+A = M
+D = M
+@SP
+M = M - 1
+@SP
+A = M
+D = D + M
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//add
+@SP
+M = M - 1
+@SP
+A = M
+D = M
+@SP
+M = M - 1
+@SP
+A = M
+D = D + M
 @SP
 A = M
 M = D
@@ -597,11 +532,51 @@ M = D
 A = M
 0;JMP
 
-//function Class2.get 0
-(Class2.get)
+//function Sys.add12 0
+(Sys.add12)
 
-//push static 0
-@Class2.0
+//push constant 4002
+@4002
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//pop pointer 0
+@SP
+M = M - 1
+@SP
+A = M
+D = M
+@R3
+M = D
+
+//push constant 5002
+@5002
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//pop pointer 1
+@SP
+M = M - 1
+@SP
+A = M
+D = M
+@R4
+M = D
+
+//push argument 0
+@ARG
+D = M
+@0
+D = D + A
+A = D
 D = M
 @SP
 A = M
@@ -609,16 +584,16 @@ M = D
 @SP
 M = M + 1
 
-//push static 1
-@Class2.1
-D = M
+//push constant 12
+@12
+D = A
 @SP
 A = M
 M = D
 @SP
 M = M + 1
 
-//sub
+//add
 @SP
 M = M - 1
 @SP
@@ -628,7 +603,7 @@ D = M
 M = M - 1
 @SP
 A = M
-D = M - D
+D = D + M
 @SP
 A = M
 M = D
