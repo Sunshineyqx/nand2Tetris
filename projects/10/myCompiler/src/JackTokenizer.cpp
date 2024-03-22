@@ -168,7 +168,7 @@ void JackTokenizer::processIntConst(){
     }
     curToken.type = INT_CONST;
     curToken.val = stoi(srcCode.substr(firstIndex, index - firstIndex));
-    cout << intVal() << endl;
+    //cout << intVal() << endl;
 }
 
 void JackTokenizer::processKeywordAndIdentifier(){
@@ -180,12 +180,12 @@ void JackTokenizer::processKeywordAndIdentifier(){
     if(isKeyWord(str)){
         curToken.type = SYMBOL;
         curToken.val = str;
-        cout << keyWord() << endl;
+        //cout << keyWord() << endl;
     }
     else{
         curToken.type = IDENTIFIER;
         curToken.val = str;
-        cout << identifier() <<endl;
+        //cout << identifier() <<endl;
 
     }
     index = fastIndex;
@@ -222,7 +222,7 @@ void JackTokenizer::processSymbol(){
     curToken.type = SYMBOL;
     curToken.val = string(1, srcCode[index]);
     ++index;
-    cout << symbol() << endl;
+    //cout << symbol() << endl;
 }
 
 
