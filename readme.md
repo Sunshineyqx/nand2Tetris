@@ -301,7 +301,7 @@ https://www.coursera.org/learn/build-a-computer/lecture/XtYPq/unit-3-6-perspecti
 
 ![image-20240311101951477](readme.assets/image-20240311101951477.png)
 
-## Project 7
+## Project 7 VmTranslator 1
 
 虚拟机
 
@@ -417,7 +417,7 @@ https://www.coursera.org/learn/build-a-computer/lecture/XtYPq/unit-3-6-perspecti
 
 ---
 
-## Project 8
+## Project 8 VmTranslator 2
 
 在上一模块中，我们介绍了虚拟机抽象，并开发了一个基本的虚拟机翻译器来实现虚拟机语言的算术和内存访问命令。在本模块中，我们将通过实现剩余的虚拟机语言分支和函数调用命令来完成虚拟机翻译器。
 
@@ -512,3 +512,299 @@ return
 ![image-20240315234745006](readme.assets/image-20240315234745006.png)
 
 ![image-20240315234759486](readme.assets/image-20240315234759486.png)
+
+---
+
+## Project 9 Jack
+
+### 1. Jack语言概要
+
+![image-20240317134123960](readme.assets/image-20240317134123960.png)
+
+![image-20240317134159922](readme.assets/image-20240317134159922.png)
+
+![image-20240317134346253](readme.assets/image-20240317134346253.png)
+
+![image-20240317134402097](readme.assets/image-20240317134402097.png)
+
+![image-20240317134416477](readme.assets/image-20240317134416477.png)
+
+![image-20240317134424181](readme.assets/image-20240317134424181.png)
+
+### 2. 面向对象的编程
+
+![image-20240317150008298](readme.assets/image-20240317150008298.png)
+
+![image-20240317150730644](readme.assets/image-20240317150730644.png)
+
+### 3. 列表/链表
+
+![image-20240317151848270](readme.assets/image-20240317151848270.png)
+
+![image-20240319105757141](readme.assets/image-20240319105757141.png)
+
+### 4. Jack语言规范
+
+#### 1. 语法
+
+![image-20240319110949537](readme.assets/image-20240319110949537.png)
+
+![image-20240319111002240](readme.assets/image-20240319111002240.png)
+
+![image-20240319111127847](readme.assets/image-20240319111127847.png)
+
+![image-20240319111149733](readme.assets/image-20240319111149733.png)
+
+#### 2.数据类型
+
+![image-20240319111623175](readme.assets/image-20240319111623175.png)
+
+负数的表示使用负号 + 正整数/标识符
+
+![image-20240319121843717](readme.assets/image-20240319121843717.png)
+
+#### 3. 类
+
+![image-20240319122441050](readme.assets/image-20240319122441050.png)
+
+![image-20240319124711352](readme.assets/image-20240319124711352.png)
+
+![image-20240319124723726](readme.assets/image-20240319124723726.png)
+
+#### 4. 方法
+
+![image-20240319125615162](readme.assets/image-20240319125615162.png)
+
+//构造函数
+
+![image-20240319125749853](readme.assets/image-20240319125749853.png)
+
+//变量
+
+![image-20240319130027195](readme.assets/image-20240319130027195.png)
+
+![image-20240319130124445](readme.assets/image-20240319130124445.png)
+
+//statements 语句
+
+![image-20240319130336383](readme.assets/image-20240319130336383.png)
+
+//表达式
+
+![image-20240319130754297](readme.assets/image-20240319130754297.png)
+
+//子例程调用
+
+![image-20240319131118566](readme.assets/image-20240319131118566.png)
+
+//Strings
+
+![image-20240319131326816](readme.assets/image-20240319131326816.png)
+
+//Arrays
+
+![image-20240319131647148](readme.assets/image-20240319131647148.png)
+
+//语言特性
+
+![image-20240319132251912](readme.assets/image-20240319132251912.png)
+
+---
+
+### 5. 使用Jack和OS开发应用程序
+
+#### 1. Output![image-20240319181442070](readme.assets/image-20240319181442070.png)
+
+#### 2. Screen
+
+![image-20240319181817829](readme.assets/image-20240319181817829.png)
+
+#### 3. Keyboard
+
+![image-20240319182008137](readme.assets/image-20240319182008137.png)
+
+//字符集
+
+![image-20240319182108417](readme.assets/image-20240319182108417.png)
+
+#### 4.Math
+
+![image-20240319182559678](readme.assets/image-20240319182559678.png)
+
+#### 5. String
+
+![image-20240319182617156](readme.assets/image-20240319182617156.png)
+
+#### 6. Array
+
+![image-20240319182938022](readme.assets/image-20240319182938022.png)
+
+#### 7. Memory
+
+![image-20240319183517617](readme.assets/image-20240319183517617.png)
+
+#### 8. Sys
+
+![image-20240319183530754](readme.assets/image-20240319183530754.png)
+
+(halt: 停止)
+
+---
+
+### 6. Jack应用示例
+
+#### Square
+
+![image-20240319190229779](readme.assets/image-20240319190229779.png)
+
+![image-20240319191206592](readme.assets/image-20240319191206592.png)
+
+![image-20240319192050416](readme.assets/image-20240319192050416.png)
+
+。。。
+
+---
+
+### 7. 图形优化
+
+>  本节主题: 绕过操作系统，使用自己的图形库
+
+//一般的绘图方式
+
+![image-20240319203036519](readme.assets/image-20240319203036519.png)
+
+![image-20240319203201087](readme.assets/image-20240319203201087.png)
+
+![image-20240319204132168](readme.assets/image-20240319204132168.png)
+
+//自定义绘图
+
+![image-20240319205605839](readme.assets/image-20240319205605839.png)
+
+工具
+
+![image-20240319205643246](readme.assets/image-20240319205643246.png)
+
+---
+
+## Project 10 编译器 1
+
+将高级程序翻译成低级语言包括两个定义明确且大致独立的阶段：***语法分析***和***代码生成***。  这两个阶段将分别在project 10 和project 11中讨论和实施。
+
+语法分析--本模块的主题--包括两个子阶段：*词法分析*（也称为*标记化*）和*解析*。
+
+我们将首先介绍词法分析和语法分析的基本概念。这将为本模块的其余部分奠定基础，在这些部分中，我们将为 Jack 语言实现一个标记化器和解析器。结果将是一个*Jack 分析器*--**一个无需生成可执行代码就能揭示 Jack 程序语法的程序。**
+
+在project 11 中，这个 Jack 分析器将增加代码生成功能，从而形成一个完整的 Jack 语言编译器。
+
+### 1. 语法分析
+
+![image-20240319225249259](readme.assets/image-20240319225249259.png)
+
+![image-20240320190736528](readme.assets/image-20240320190736528.png)
+
+![image-20240320190842330](readme.assets/image-20240320190842330.png)
+
+### 2. 词法分析
+
+token划分
+
+### 3. 解析树
+
+对连续的token进行解析，是否符合语法规范。
+
+![image-20240320190803482](readme.assets/image-20240320190803482.png)
+
+![image-20240320190814226](readme.assets/image-20240320190814226.png)
+
+![image-20240320190823675](readme.assets/image-20240320190823675.png)
+
+### 4. Jack语法！！！
+
+![image-20240320191604560](readme.assets/image-20240320191604560.png)
+
+#### 1. 词法元素/Token
+
+![image-20240320194033577](readme.assets/image-20240320194033577.png)
+
+#### 2. 程序结构
+
+![image-20240320194052457](readme.assets/image-20240320194052457.png)
+
+#### 3. 语句
+
+![image-20240320194117160](readme.assets/image-20240320194117160.png)
+
+#### 4. 表达式
+
+![image-20240320194133928](readme.assets/image-20240320194133928.png)
+
+//LL(2)的特殊情况
+
+![image-20240320194228934](readme.assets/image-20240320194228934.png)
+
+
+
+---
+
+### 5. Jack Analyzer
+
+#### 1. 终端规则
+
+停止迭代/递归
+
+![image-20240320195528314](readme.assets/image-20240320195528314.png)
+
+#### 2. 非终端规则
+
+![image-20240320200210411](readme.assets/image-20240320200210411.png)
+
+//特殊的简单逻辑(同6.2)
+
+![image-20240320202845731](readme.assets/image-20240320202845731.png)
+
+### 6. 实现建议
+
+![image-20240320203341096](readme.assets/image-20240320203341096.png)
+
+![image-20240320204148573](readme.assets/image-20240320204148573.png)
+
+#### 1. JackTokenizer
+
+![image-20240320205540433](readme.assets/image-20240320205540433.png)
+
+![image-20240321133029283](readme.assets/image-20240321133029283.png)
+
+![image-20240320210345756](readme.assets/image-20240320210345756.png)
+
+![image-20240320210359851](readme.assets/image-20240320210359851.png)
+
+#### 2. CompilationEngine
+
+![image-20240320210826984](readme.assets/image-20240320210826984.png)
+
+![image-20240320211111839](readme.assets/image-20240320211111839.png)
+
+![image-20240320211143502](readme.assets/image-20240320211143502.png)
+
+![image-20240320211211897](readme.assets/image-20240320211211897.png)
+
+![image-20240320211230255](readme.assets/image-20240320211230255.png)
+
+//特殊的简单逻辑
+
+![image-20240320211917211](readme.assets/image-20240320211917211.png)
+
+#### 3. JackAnalyzer
+
+![image-20240320203715209](readme.assets/image-20240320203715209.png)
+
+![image-20240320212216401](readme.assets/image-20240320212216401.png)
+
+---
+
+### 7. 构建语法分析器
+
+![image-20240321133421516](readme.assets/image-20240321133421516.png)
+
+![image-20240321133828064](readme.assets/image-20240321133828064.png)
