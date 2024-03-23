@@ -3,7 +3,7 @@ using namespace std;
 #include <sstream>
 #include <cctype>
 
-JackTokenizer::JackTokenizer(const std::string& filePath): inFile(filePath), index(0){
+JackTokenizer::JackTokenizer(const std::string& filePath): inFile(filePath), index(0), testToken("./debug/testToken.txt"){
     if(!inFile.is_open()){
         cerr << "JackTokenizer::JackTokenizer(const std::string& filePath): 打开文件失败..." << endl;
     }
@@ -107,6 +107,17 @@ string JackTokenizer::stringVal(){
     return get<string>(curToken.val);
 }
 
+//gets the next token!
+Token JackTokenizer::getNextToken(){
+    int lastIndex = index;
+    Token lastToken = curToken;
+    advance();
+    Token nextToken = curToken;
+    index = lastIndex;
+    curToken = lastToken;
+    return nextToken;
+}
+
 //helper function
 void JackTokenizer::initSymbols(){
     string specialCharsStr = "{}()[].,;+-*&|<>=~";
@@ -168,7 +179,7 @@ void JackTokenizer::processIntConst(){
     }
     curToken.type = INT_CONST;
     curToken.val = stoi(srcCode.substr(firstIndex, index - firstIndex));
-    //cout << intVal() << endl;
+    //testToken << intVal() << endl;
 }
 
 void JackTokenizer::processKeywordAndIdentifier(){
@@ -178,14 +189,14 @@ void JackTokenizer::processKeywordAndIdentifier(){
     }
     auto str = srcCode.substr(index, fastIndex-index);
     if(isKeyWord(str)){
-        curToken.type = SYMBOL;
+        curToken.type = KEYWORD;
         curToken.val = str;
-        //cout << keyWord() << endl;
+        //testToken << keyWord() << endl;
     }
     else{
         curToken.type = IDENTIFIER;
         curToken.val = str;
-        //cout << identifier() <<endl;
+        //testToken << identifier() <<endl;
 
     }
     index = fastIndex;
@@ -198,7 +209,7 @@ void JackTokenizer::processStringConst(){
     curToken.type = STRING_CONST;
     curToken.val = srcCode.substr(firstIndex, lastIndex-firstIndex);
     index = lastIndex + 1;
-    cout <<stringVal() <<endl;
+    //testToken <<stringVal() <<endl;
 }
 
 void JackTokenizer::processInlineComment(){
@@ -222,9 +233,8 @@ void JackTokenizer::processSymbol(){
     curToken.type = SYMBOL;
     curToken.val = string(1, srcCode[index]);
     ++index;
-    //cout << symbol() << endl;
+    //testToken << symbol() << endl;
 }
-
 
 
 

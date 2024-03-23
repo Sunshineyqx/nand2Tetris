@@ -26,6 +26,7 @@ public:
 
     bool hasMoreTokens();
     void advance();
+    Token getNextToken(); // 不会影响curToken和index
     TokenType getTokenType();
 
     string keyWord();
@@ -53,6 +54,8 @@ private:
     int index;
     set<string> keyWords; 
     set<char> symbols;
+private: //debug
+    ofstream testToken; //   ./debug/testToken.txt
 };
 
 
