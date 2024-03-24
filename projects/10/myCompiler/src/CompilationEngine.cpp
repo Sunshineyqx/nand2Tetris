@@ -46,6 +46,7 @@ void CompilationEngine::compileClass(){
         }
         _JT->advance();
     }
+    //cout << _JT->keyWord() << endl;
     assert(_JT->getTokenType() == SYMBOL && _JT->symbol() == '}');
     outFile << "<symbol> } </symbol>" << endl;
     outFile << "</class>" << endl;
@@ -56,8 +57,17 @@ void CompilationEngine::compileClassVarDec(){
     outFile << "<keyword> " << _JT->keyWord() << " </keyword>" << endl;
 
     _JT->advance();
-    assert(_JT->getTokenType() == KEYWORD && (_JT->keyWord() == "int" || _JT->keyWord() == "char" || _JT->keyWord() == "boolean"));
-    outFile << "<keyword> " << _JT->keyWord() << " </keyword>" << endl;
+    if(_JT->getTokenType() == KEYWORD){
+        assert(_JT->keyWord() == "int" || _JT->keyWord() == "char" || _JT->keyWord() == "boolean");
+        outFile << "<keyword> " << _JT->keyWord() << " </keyword>" << endl;
+    }
+    else if(_JT->getTokenType() == IDENTIFIER){
+        outFile << "<identifier> " << _JT->identifier() << " </identifier>" << endl;
+    }
+    else{
+        cerr << "compileClassVarDec(): syntax error..." << endl;
+        exit(1);
+    }
 
     _JT->advance();
     while(!(_JT->getTokenType() == SYMBOL && (_JT->symbol() == ';'))){
@@ -83,8 +93,17 @@ void CompilationEngine::compileSubroutine(){
     outFile << "<keyword> " << _JT->keyWord() << " </keyword>"  << endl;
 
     _JT->advance();
-    assert(_JT->getTokenType() == KEYWORD && (_JT->keyWord() == "int" || _JT->keyWord() == "char" || _JT->keyWord() == "void" || _JT->keyWord() == "boolean"));
-    outFile << "<keyword> " << _JT->keyWord() << " </keyword>" << endl;
+    if(_JT->getTokenType() == KEYWORD){
+        assert(_JT->keyWord() == "int" || _JT->keyWord() == "char" || _JT->keyWord() == "void" || _JT->keyWord() == "boolean");
+        outFile << "<keyword> " << _JT->keyWord() << " </keyword>" << endl;
+    }
+    else if(_JT->getTokenType() == IDENTIFIER){
+        outFile << "<identifier> " << _JT->identifier() << " </identifier>" << endl;
+    }
+    else{
+        cerr << "compileSubroutine(): syntax error..." << endl;
+        exit(1);
+    }
 
     _JT->advance();
     assert(_JT->getTokenType() == IDENTIFIER);
@@ -159,14 +178,25 @@ void CompilationEngine::compileVarDec(){
     outFile << "<keyword> var </keyword>" << endl;
 
     _JT->advance();
-    assert(_JT->getTokenType() == KEYWORD && (_JT->keyWord() == "int" || _JT->keyWord() == "char" || _JT->keyWord() == "boolean"));
-    outFile << "<identifier>" << _JT->identifier() << "</identifier>" << endl;
+    if(_JT->getTokenType() == IDENTIFIER){
+        outFile << "<identifier> " << _JT->identifier() << " </identifier>" << endl;
+    }
+    else if(_JT->getTokenType() == KEYWORD && (_JT->keyWord() == "int" ||_JT->keyWord() == "boolean" || _JT->keyWord() == "char")){
+        outFile << "<keyword> " << _JT->keyWord() << " </keyword>" << endl;
+    }
 
     _JT->advance();
     assert(_JT->getTokenType() == IDENTIFIER);
-    outFile << "<identifier>" << _JT->identifier() << "</identifier>" << endl;
+    outFile << "<identifier> " << _JT->identifier() << " </identifier>" << endl;
 
     _JT->advance();
+    while(_JT->getTokenType() == SYMBOL && _JT->symbol() == ','){ // a,b,c...;
+        outFile << "<symbol> , </symbol>" << endl;
+        _JT->advance();
+        assert(_JT->getTokenType() == IDENTIFIER);
+        outFile << "<identifier> " << _JT->identifier() << " </identifier>" << endl;
+        _JT->advance();
+    }
     assert(_JT->getTokenType() == SYMBOL && _JT->symbol() == ';');
     outFile << "<symbol> ; </symbol>" << endl;
 
@@ -176,7 +206,7 @@ void CompilationEngine::compileVarDec(){
 
 void CompilationEngine::compileStatements(){
     outFile << "<statements>" << endl;
-    while(_JT->getTokenType() == KEYWORD && _JT->keyWord() == "let" || _JT->keyWord() == "if" || _JT->keyWord() == "else" || _JT->keyWord() == "while" || _JT->keyWord() == "do" || _JT->keyWord() == "return"){
+    while(_JT->getTokenType() == KEYWORD && (_JT->keyWord() == "let" || _JT->keyWord() == "if" || _JT->keyWord() == "else" || _JT->keyWord() == "while" || _JT->keyWord() == "do" || _JT->keyWord() == "return")){
         if(_JT->keyWord() == "let"){
             compileLet();
         }
@@ -192,6 +222,7 @@ void CompilationEngine::compileStatements(){
         }
         else if(_JT->keyWord() == "do"){
             compileDo();
+            //cout << _JT->getTokenType() << " " << _JT->symbol() << endl;
         }
         else if(_JT->keyWord() == "return"){
             compileReturn();
@@ -215,8 +246,25 @@ void CompilationEngine::compileLet(){
     outFile << "<identifier> " << _JT->identifier() << " </identifier>" << endl;
 
     _JT->advance();
-    assert(_JT->getTokenType() == SYMBOL && _JT->symbol() == '=');
-    outFile << "<symbol> = </symbol>" << endl;
+    assert(_JT->getTokenType() == SYMBOL);
+    if(_JT->symbol() == '='){  // a = 1;
+        outFile << "<symbol> = </symbol>" << endl;
+    }
+    else if(_JT->symbol() == '['){ //a[1] = 1;
+        outFile << "<symbol> [ </symbol>" << endl;
+        _JT->advance();
+        compileExpression();
+        assert(_JT->getTokenType() == SYMBOL && _JT->symbol() == ']');
+        outFile << "<symbol> ] </symbol>" << endl;
+
+        _JT->advance();
+        assert(_JT->getTokenType() == SYMBOL && _JT->symbol() == '=');
+        outFile << "<symbol> = </symbol>" << endl;
+    }
+    else{
+        cerr << "compileLet(): syntax error...<<endl";
+        exit(1);
+    }
 
     _JT->advance();
     compileExpression();
@@ -265,7 +313,7 @@ void CompilationEngine::compileIf(){
 
         _JT->advance();
     }
-    outFile << "/<ifStatement>"<<endl;
+    outFile << "</ifStatement>"<<endl;
 }
 
 void CompilationEngine::compileWhile(){
@@ -302,7 +350,7 @@ void CompilationEngine::compileDo(){
 
     _JT->advance();
     assert(_JT->getTokenType() == IDENTIFIER);
-    outFile << "<identifier> " << _JT->identifier() << "</identifier>" << endl;
+    outFile << "<identifier> " << _JT->identifier() << " </identifier>" << endl;
 
     _JT->advance();
     if(_JT->getTokenType() == SYMBOL) {
@@ -341,7 +389,11 @@ void CompilationEngine::compileDo(){
         cerr << "compileDo: subroutineCall语法错误...类型错误"<<endl;
         exit(1);
     }
+    _JT->advance();
+    assert(_JT->getTokenType() == SYMBOL && _JT->symbol() == ';');
+    outFile << "<symbol> ; </symbol>" << endl;
     outFile << "</doStatement>" << endl;
+
     _JT->advance();
 }
 
@@ -355,6 +407,7 @@ void CompilationEngine::compileReturn(){
         compileExpression();
     }
     assert(_JT->getTokenType() == SYMBOL && _JT->symbol() == ';');
+    outFile << "<symbol> ; </symbol>" << endl;
     outFile << "</returnStatement>" << endl;
     _JT->advance();
 }
@@ -365,18 +418,18 @@ void CompilationEngine::compileExpression(){
 
     _JT->advance();
     while(_JT->getTokenType() == SYMBOL){
-        if(_JT->symbol() == ';' || _JT->symbol() == ')' || _JT->symbol() == ','){ //end of expression...maybe more!!!
+        if(_JT->symbol() == ';' || _JT->symbol() == ')' || _JT->symbol() == ','||_JT->symbol() == ']'){ //end of expression...maybe more!!!
             break;
         }
         else{ //other (op term)*
             if(_JT->symbol() == '>'){
-                outFile << "<symbol> " << "&lt" << " </symbol>" <<endl;
+                outFile << "<symbol> " << "&gt;" << " </symbol>" <<endl;
             }
             else if(_JT->symbol() == '<'){
-                outFile << "<symbol> " << "&gt" << " </symbol>" <<endl;
+                outFile << "<symbol> " << "&lt;" << " </symbol>" <<endl;
             }
             else if(_JT->symbol() == '&'){
-                outFile << "<symbol> " << "&amp" << " </symbol>" <<endl;
+                outFile << "<symbol> " << "&amp;" << " </symbol>" <<endl;
             }
             else{
                 outFile << "<symbol> " << _JT->symbol() << " </symbol>" <<endl;
@@ -387,6 +440,9 @@ void CompilationEngine::compileExpression(){
         }
     }
     outFile << "</expression>" << endl;
+    if(_JT->getTokenType() == SYMBOL && _JT->symbol() == ',') {
+                outFile << "<symbol> , </symbol>" << endl;
+    }
 }
 
 void CompilationEngine::compileTerm(){
@@ -396,7 +452,7 @@ void CompilationEngine::compileTerm(){
         outFile << "<integerConstant> " << _JT->intVal() << " </integerConstant>" << endl;  
     }
     else if(_JT->getTokenType() == STRING_CONST){
-        outFile << "<stringConst> " << _JT->stringVal() << " </stringConst>" << endl;
+        outFile << "<stringConstant> " << _JT->stringVal() << " </stringConstant>" << endl;
     }
     else if(_JT->getTokenType() == KEYWORD){
         outFile << "<keyword> " << _JT->keyWord() << " </keyword>" << endl;
@@ -459,6 +515,8 @@ void CompilationEngine::compileTerm(){
         }
         else if(_JT->symbol() == '-' or _JT->symbol() == '~'){ //unary op:- ~
             outFile << "<symbol> " << _JT->symbol() << " </symbol>" << endl;
+            _JT->advance();
+            compileTerm();
         }
         else{
             cerr << "compileTerm(): 错误的keyWord: " << _JT->keyWord() << endl;
