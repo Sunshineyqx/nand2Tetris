@@ -806,3 +806,210 @@ token划分
 ![image-20240321133421516](readme.assets/image-20240321133421516.png)
 
 ![image-20240321133828064](readme.assets/image-20240321133828064.png)
+
+---
+
+## Project 11 编译器2/代码生成
+
+在上一模块中，您已构建了 Jack 语言的语法分析器。在本模块中，我们将把这个分析器改造成一个完整的 Jack 编译器。这需要将分析器生成 XML 代码的逻辑修改为生成可执行 VM 代码的逻辑。
+
+为此，我们将介绍如何生成将过程式程序转化为 VM 程序的 VM 代码，以及如何生成用于构造和操作数组和对象的 VM 代码。
+
+然后，我们将指导您如何使用这些代码生成技术，将上一个项目中开发的 Jack 分析器转化为完整的 Jack 编译器。这将是您开发基于后台虚拟机的双层编译器的四个模块之旅的终点。
+
+### 1. 处理变量
+
+//符号表
+
+![image-20240324220711596](readme.assets/image-20240324220711596.png)
+
+![image-20240324221441317](readme.assets/image-20240324221441317.png)
+
+![image-20240324224124950](readme.assets/image-20240324224124950.png)
+
+![image-20240324231423371](readme.assets/image-20240324231423371.png)
+
+---
+
+### 2. 处理表达式
+
+//方法1：深度优先遍历
+
+![image-20240325154316509](readme.assets/image-20240325154316509.png)
+
+//方法2：递归
+
+![image-20240325154341136](readme.assets/image-20240325154341136.png)
+
+---
+
+![image-20240325154435858](readme.assets/image-20240325154435858.png)
+
+---
+
+### 3. 处理控制流
+
+//if
+
+![image-20240325160221003](readme.assets/image-20240325160221003.png)
+
+//while
+
+![image-20240325160745760](readme.assets/image-20240325160745760.png)
+
+![image-20240325162001362](readme.assets/image-20240325162001362.png)
+
+// let do return ： easy
+
+---
+
+### 4. 处理对象
+
+#### 1. 低层次
+
+![image-20240325163226114](readme.assets/image-20240325163226114.png)
+
+//local、argument
+
+![image-20240325170744916](readme.assets/image-20240325170744916.png)
+
+//this、that（对象、数组）
+
+![image-20240325171419431](readme.assets/image-20240325171419431.png)
+
+![image-20240325172506493](readme.assets/image-20240325172506493.png)
+
+---
+
+#### 2. 高层次:对象构造
+
+![image-20240325174212501](readme.assets/image-20240325174212501.png)
+
+//constructor：
+
+//caller
+
+![image-20240325180239692](readme.assets/image-20240325180239692.png)
+
+//callee
+
+![image-20240325205151816](readme.assets/image-20240325205151816.png)
+
+//compile constructor
+
+![image-20240325230903164](readme.assets/image-20240325230903164.png)
+
+---
+
+#### 3. 对象操作
+
+//编译 obj.methodCall() / caller
+
+![image-20240326110723340](readme.assets/image-20240326110723340.png)
+
+![image-20240326111156144](readme.assets/image-20240326111156144.png)
+
+//编译 methods / callee
+
+![image-20240326111514057](readme.assets/image-20240326111514057.png)
+
+![image-20240326113649986](readme.assets/image-20240326113649986.png)
+
+//特殊的void method
+
+![image-20240326114616330](readme.assets/image-20240326114616330.png)
+
+### 5. 处理数组
+
+![image-20240326120141993](readme.assets/image-20240326120141993.png)
+
+//使用that访问RAM的例子
+
+![image-20240326120609776](readme.assets/image-20240326120609776.png)
+
+//array access的一种有问题的方案....
+
+![image-20240326121444591](readme.assets/image-20240326121444591.png)
+
+好问题
+
+![image-20240326121423887](readme.assets/image-20240326121423887.png)
+
+//but maybe crash in...
+
+![image-20240326161028151](readme.assets/image-20240326161028151.png)
+
+because expression 2破坏了我们的pointer 1/THAT
+
+![image-20240326162447854](readme.assets/image-20240326162447854.png)
+
+//正确方案！！！
+
+延迟(在expression 2计算保存完之后)将左侧地址写入pointer 1/THAT
+
+![image-20240326162535813](readme.assets/image-20240326162535813.png)
+
+![image-20240326163547924](readme.assets/image-20240326163547924.png)
+
+---
+
+### 6.虚拟机平台上的标准映射
+
+#### 1.文件和类的子例程声明
+
+![image-20240326171240563](readme.assets/image-20240326171240563.png)
+
+#### 2. 变量
+
+![image-20240326171307796](readme.assets/image-20240326171307796.png)
+
+#### 3.数组
+
+![image-20240326171350111](readme.assets/image-20240326171350111.png)
+
+#### 4. 子例程定义
+
+![image-20240326172306133](readme.assets/image-20240326172306133.png)
+
+#### 5.子例程调用
+
+![image-20240326173238375](readme.assets/image-20240326173238375.png)
+
+#### 6. 常量
+
+![image-20240326173351605](readme.assets/image-20240326173351605.png)
+
+#### 7.OS
+
+![image-20240326174042653](readme.assets/image-20240326174042653.png)
+
+![image-20240326174059252](readme.assets/image-20240326174059252.png)
+
+---
+
+### 8.实现建议
+
+![image-20240326174346289](readme.assets/image-20240326174346289.png)
+
+#### 1. JackCompiler
+
+![image-20240326175822317](readme.assets/image-20240326175822317.png)
+
+#### 2. SymbolTable
+
+![image-20240326180913948](readme.assets/image-20240326180913948.png)
+
+//api
+
+![image-20240326181447459](readme.assets/image-20240326181447459.png)
+
+![image-20240326191312309](readme.assets/image-20240326191312309.png)
+
+#### 3. VmWriter
+
+![image-20240326191740895](readme.assets/image-20240326191740895.png)
+
+### 9. 具体实现
+
+![image-20240326200244768](readme.assets/image-20240326200244768.png)
+

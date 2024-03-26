@@ -175,10 +175,10 @@ void CodeWriter::WriteFunction(const string& func, int localNums){
 
  void CodeWriter::vmInit(){
     outFile << "//bootstrap" << endl;
-    string out = "@261\nD=A\n"
-                            "@SP\nM=D\n" // Esp init
-                            "@Sys.init\n" // call
-                            "0;JMP\n";
+    string out = "@256\nD=A\n"
+                "@SP\nM=D\n" // Esp init
+                "@Sys.init\n" // call
+                "0;JMP\n";
     outFile << out << endl;
  }
 
