@@ -3,7 +3,7 @@ using namespace std;
 #include <sstream>
 #include <cctype>
 
-JackTokenizer::JackTokenizer(const std::string& filePath): inFile(filePath), index(0), testToken("./debug/testToken.txt"){
+JackTokenizer::JackTokenizer(const std::string& filePath): inFile(filePath), index(0){
     if(!inFile.is_open()){
         cerr << "JackTokenizer::JackTokenizer(const std::string& filePath): 打开文件失败..." << endl;
     }

@@ -54,8 +54,6 @@ private:
     int index;
     set<string> keyWords; 
     set<char> symbols;
-private: //debug
-    ofstream testToken; //   ./debug/testToken.txt
 };
 
 

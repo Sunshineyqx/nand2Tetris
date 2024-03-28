@@ -2,6 +2,8 @@
 #define COMPILATIONENGINE_H
 
 #include "./JackTokenizer.h"
+#include "./SymbolTable.h"
+#include "./VMWriter.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -9,7 +11,7 @@ using namespace std;
 
 class CompilationEngine{
 public:
-    CompilationEngine(JackTokenizer* tokenizer, const string& outFilePath);
+    CompilationEngine(JackTokenizer* tokenizer, VMWriter * VM, SymbolTable * ST);
     ~CompilationEngine();
 
     void compileClass(void); // Compiles a complete class
@@ -30,7 +32,14 @@ public:
     
 private:
     JackTokenizer* _JT;
-    ofstream outFile;
+	SymbolTable* _ST;
+	VMWriter* _VM;
+	string _className;
+	string _subroutineType;
+	string _returnType;
+	string _currentFunctionName;
+	int _argNums;
+	int _labelNums;
 };
 
 
