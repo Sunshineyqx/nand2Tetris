@@ -17,7 +17,7 @@ namespace vm=vmwriter;
 
 class VMWriter{
 public:
-    VMWriter(string fileName);
+    VMWriter(string filePath);
 
     void writePush(vm::Segment segment, int index); // Writes a VM push command
 	void writePop(vm::Segment segment, int index); // Writes a VM pop command
@@ -29,9 +29,11 @@ public:
 	void writeFunction(string name, int nLocals); // Writes a VM function command
 	void writeReturn(void); // Writes a VM return command
 	void close(void); // Closes the output file
+	string getFileName() {return fileName_;}
 
 private:
     ofstream fout_;
+	string fileName_;
 };
 
 

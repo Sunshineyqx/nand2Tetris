@@ -106,7 +106,7 @@ lt
 pop this 7
 push this 7
 not
-if-goto IFFALSE0
+if-goto Ball.IFFALSE0
 push local 0
 pop local 2
 push local 1
@@ -121,8 +121,8 @@ push this 0
 push argument 1
 lt
 pop this 9
-goto CONTINUE0
-label IFFALSE0
+goto Ball.CONTINUE0
+label Ball.IFFALSE0
 push this 0
 push argument 1
 lt
@@ -131,7 +131,7 @@ push this 1
 push argument 2
 lt
 pop this 9
-label CONTINUE0
+label Ball.CONTINUE0
 push constant 2
 push local 1
 call Math.multiply 2
@@ -160,138 +160,138 @@ push this 4
 push constant 0
 lt
 not
-if-goto IFFALSE1
+if-goto Ball.IFFALSE1
 push this 4
 push this 5
 add
 pop this 4
-goto CONTINUE1
-label IFFALSE1
+goto Ball.CONTINUE1
+label Ball.IFFALSE1
 push this 4
 push this 6
 add
 pop this 4
 push this 9
 not
-if-goto IFFALSE2
+if-goto Ball.IFFALSE2
 push this 7
 not
-if-goto IFFALSE3
+if-goto Ball.IFFALSE3
 push this 0
 push constant 4
 add
 pop this 0
-goto CONTINUE3
-label IFFALSE3
+goto Ball.CONTINUE3
+label Ball.IFFALSE3
 push this 1
 push constant 4
 add
 pop this 1
-label CONTINUE3
-goto CONTINUE2
-label IFFALSE2
+label Ball.CONTINUE3
+goto Ball.CONTINUE2
+label Ball.IFFALSE2
 push this 7
 not
-if-goto IFFALSE4
+if-goto Ball.IFFALSE4
 push this 0
 push constant 4
 sub
 pop this 0
-goto CONTINUE4
-label IFFALSE4
+goto Ball.CONTINUE4
+label Ball.IFFALSE4
 push this 1
 push constant 4
 sub
 pop this 1
-label CONTINUE4
-label CONTINUE2
-label CONTINUE1
+label Ball.CONTINUE4
+label Ball.CONTINUE2
+label Ball.CONTINUE1
 push this 8
 not
-if-goto IFFALSE5
+if-goto Ball.IFFALSE5
 push this 7
 not
-if-goto IFFALSE6
+if-goto Ball.IFFALSE6
 push this 1
 push constant 4
 add
 pop this 1
-goto CONTINUE6
-label IFFALSE6
+goto Ball.CONTINUE6
+label Ball.IFFALSE6
 push this 0
 push constant 4
 add
 pop this 0
-label CONTINUE6
-goto CONTINUE5
-label IFFALSE5
+label Ball.CONTINUE6
+goto Ball.CONTINUE5
+label Ball.IFFALSE5
 push this 7
 not
-if-goto IFFALSE7
+if-goto Ball.IFFALSE7
 push this 1
 push constant 4
 sub
 pop this 1
-goto CONTINUE7
-label IFFALSE7
+goto Ball.CONTINUE7
+label Ball.IFFALSE7
 push this 0
 push constant 4
 sub
 pop this 0
-label CONTINUE7
-label CONTINUE5
+label Ball.CONTINUE7
+label Ball.CONTINUE5
 push this 0
 push this 10
 gt
 not
 not
-if-goto IFFALSE8
+if-goto Ball.IFFALSE8
 push constant 1
 pop this 14
 push this 10
 pop this 0
-goto CONTINUE8
-label IFFALSE8
-label CONTINUE8
+goto Ball.CONTINUE8
+label Ball.IFFALSE8
+label Ball.CONTINUE8
 push this 0
 push this 11
 lt
 not
 not
-if-goto IFFALSE9
+if-goto Ball.IFFALSE9
 push constant 2
 pop this 14
 push this 11
 pop this 0
-goto CONTINUE9
-label IFFALSE9
-label CONTINUE9
+goto Ball.CONTINUE9
+label Ball.IFFALSE9
+label Ball.CONTINUE9
 push this 1
 push this 12
 gt
 not
 not
-if-goto IFFALSE10
+if-goto Ball.IFFALSE10
 push constant 3
 pop this 14
 push this 12
 pop this 1
-goto CONTINUE10
-label IFFALSE10
-label CONTINUE10
+goto Ball.CONTINUE10
+label Ball.IFFALSE10
+label Ball.CONTINUE10
 push this 1
 push this 13
 lt
 not
 not
-if-goto IFFALSE11
+if-goto Ball.IFFALSE11
 push constant 4
 pop this 14
 push this 13
 pop this 1
-goto CONTINUE11
-label IFFALSE11
-label CONTINUE11
+goto Ball.CONTINUE11
+label Ball.IFFALSE11
+label Ball.CONTINUE11
 push pointer 0
 call Ball.show 1
 pop temp 0
@@ -312,11 +312,11 @@ push argument 1
 push constant 0
 eq
 not
-if-goto IFFALSE12
+if-goto Ball.IFFALSE12
 push constant 10
 pop local 4
-goto CONTINUE12
-label IFFALSE12
+goto Ball.CONTINUE12
+label Ball.IFFALSE12
 push this 2
 push constant 0
 lt
@@ -335,20 +335,20 @@ eq
 and
 or
 not
-if-goto IFFALSE13
+if-goto Ball.IFFALSE13
 push constant 20
 pop local 4
-goto CONTINUE13
-label IFFALSE13
+goto Ball.CONTINUE13
+label Ball.IFFALSE13
 push constant 5
 pop local 4
-label CONTINUE13
-label CONTINUE12
+label Ball.CONTINUE13
+label Ball.CONTINUE12
 push this 14
 push constant 1
 eq
 not
-if-goto IFFALSE14
+if-goto Ball.IFFALSE14
 push constant 506
 pop local 0
 push local 3
@@ -364,13 +364,13 @@ push local 4
 call Math.multiply 2
 add
 pop local 1
-goto CONTINUE14
-label IFFALSE14
+goto Ball.CONTINUE14
+label Ball.IFFALSE14
 push this 14
 push constant 2
 eq
 not
-if-goto IFFALSE15
+if-goto Ball.IFFALSE15
 push constant 0
 pop local 0
 push local 3
@@ -385,13 +385,13 @@ push local 4
 call Math.multiply 2
 add
 pop local 1
-goto CONTINUE15
-label IFFALSE15
+goto Ball.CONTINUE15
+label Ball.IFFALSE15
 push this 14
 push constant 3
 eq
 not
-if-goto IFFALSE16
+if-goto Ball.IFFALSE16
 push constant 250
 pop local 1
 push local 2
@@ -407,8 +407,8 @@ push local 4
 call Math.multiply 2
 add
 pop local 0
-goto CONTINUE16
-label IFFALSE16
+goto Ball.CONTINUE16
+label Ball.IFFALSE16
 push constant 0
 pop local 1
 push local 2
@@ -423,9 +423,9 @@ push local 4
 call Math.multiply 2
 add
 pop local 0
-label CONTINUE16
-label CONTINUE15
-label CONTINUE14
+label Ball.CONTINUE16
+label Ball.CONTINUE15
+label Ball.CONTINUE14
 push pointer 0
 push local 0
 push local 1

@@ -319,8 +319,8 @@ void CompilationEngine::compileLet(){
 
 void CompilationEngine::compileIf(){
     stringstream labelFalse, labelContinue;
-    labelFalse << "IFFALSE"  << _labelNums;
-    labelContinue << "CONTINUE" <<  _labelNums;
+    labelFalse << _VM->getFileName() <<".IFFALSE"  << _labelNums;
+    labelContinue << _VM->getFileName() << ".CONTINUE" <<  _labelNums;
     _labelNums++;
 
     assert(_JT->getTokenType() == KEYWORD && _JT->keyWord() == "if");
@@ -362,8 +362,8 @@ void CompilationEngine::compileIf(){
 
 void CompilationEngine::compileWhile(){
     stringstream labelTrue, labelFalse;
-    labelTrue << "WHILETRUE" << _labelNums;
-    labelFalse << "WHILEFALSE" << _labelNums;
+    labelTrue << _VM->getFileName() << ".WHILETRUE" << _labelNums;
+    labelFalse << _VM->getFileName() <<".WHILEFALSE" << _labelNums;
     _labelNums++;
 
     assert(_JT->getTokenType() == KEYWORD && _JT->keyWord() == "while");

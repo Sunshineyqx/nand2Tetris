@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <filesystem>
 using namespace std;
 
 string vm::segment2String(Segment seg)
@@ -58,9 +59,12 @@ string vm::command2String(Command com)
 }
 
 
-VMWriter::VMWriter(string fileName)
-{
-	fout_.open(fileName.c_str());
+VMWriter::VMWriter(string filePath)
+{	
+	fout_.open(filePath.c_str());
+	//去掉文件路径的前后缀
+	std::filesystem::path file(filePath);
+    fileName_ = file.stem().string();
 }
 
 void VMWriter::close(void)
