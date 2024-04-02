@@ -1076,3 +1076,33 @@ Java 和 Python 等现代语言与标准类库一起部署，实现了许多此�
 ### 4. 内存访问
 
 ![image-20240329094522031](readme.assets/image-20240329094522031.png)
+
+![image-20240329103815475](readme.assets/image-20240329103815475.png)
+
+![image-20240329103835909](readme.assets/image-20240329103835909.png)
+
+### 5. 堆管理
+
+![image-20240329110144275](readme.assets/image-20240329110144275.png)
+
+![image-20240329111332785](readme.assets/image-20240329111332785.png)
+
+// alloc(size)
+
+![image-20240329112126370](readme.assets/image-20240329112126370.png)
+
+//dealloc(addr)
+
+![image-20240329112521841](readme.assets/image-20240329112521841.png)
+
+---
+
+![image-20240329113730959](readme.assets/image-20240329113730959.png)
+
+#### 6. 图形
+
+![image-20240329113848372](readme.assets/image-20240329113848372.png)
+
+![image-20240329114024420](readme.assets/image-20240329114024420.png)
+
+![image-20240329115029705](readme.assets/image-20240329115029705.png)
